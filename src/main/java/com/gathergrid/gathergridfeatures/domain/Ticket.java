@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "tickets")
@@ -73,5 +74,30 @@ public class Ticket {
 
     public void setType(TicketType type) {
         this.type = type;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ticket ticket = (Ticket) o;
+        return Float.compare(price, ticket.price) == 0 && quantityAvailable == ticket.quantityAvailable && type == ticket.type /* && ticket.event.getId() == event.getId() && Objects.equals(event, ticket.event) */;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(price, quantityAvailable, type, event);
+    }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "id=" + id +
+                ", price=" + price +
+                ", quantityAvailable=" + quantityAvailable +
+                ", type=" + type +
+                ", event=" + event +
+                ", reservations=" + reservations +
+                '}';
     }
 }

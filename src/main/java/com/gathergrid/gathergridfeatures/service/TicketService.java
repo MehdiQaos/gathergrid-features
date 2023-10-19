@@ -22,6 +22,7 @@ public class TicketService {
     public Ticket updateTicket(Ticket ticket){
         return ticketRepository.update(ticket);
     }
+
     public void deleteTicket(long id){
         ticketRepository.delete(id);
     }
@@ -32,6 +33,19 @@ public class TicketService {
 
     public List<Ticket> findAllTickets(){
         return ticketRepository.findAll();
+    }
+
+    public String checkIfTicketExist(Ticket ticket) {
+        long id = 1;
+        String message = "ticket does not exist";
+        List<Ticket> tickets = ticketRepository.finAllEventTickets(id);
+        for (Ticket listTicket : tickets) {
+            if (ticket.equals(listTicket)) {
+                message = "ticket already exists!";
+                break;
+            }
+        }
+        return message;
     }
 
 

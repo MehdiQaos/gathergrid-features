@@ -1,5 +1,6 @@
 package com.gathergrid.gathergridfeatures.controller;
 
+import com.gathergrid.gathergridfeatures.domain.Event;
 import com.gathergrid.gathergridfeatures.domain.Ticket;
 import com.gathergrid.gathergridfeatures.domain.enums.TicketType;
 import com.gathergrid.gathergridfeatures.repository.TicketRepository;
@@ -38,7 +39,8 @@ public class TicketServlet extends HttpServlet {
         TicketService ticketService = new TicketService(ticketRepository);
 
         Ticket ticket = new Ticket(price, quantity, ticketType);
-        ticketService.createTicket(ticket);
+//        ticketService.createTicket(ticket);
+        resp.getWriter().println(ticketService.createTicket(ticket));
 
 //        ticketService.deleteTicket(1);
 

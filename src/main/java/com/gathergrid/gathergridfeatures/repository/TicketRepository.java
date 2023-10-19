@@ -45,4 +45,10 @@ public class TicketRepository {
         return query.getResultList();
     }
 
+    public List<Ticket> finAllEventTickets(Long id){
+        String jpqlQuery = "SELECT t FROM Ticket t join Event e on t.event.id = :id";
+        TypedQuery<Ticket> query = entityManager.createQuery(jpqlQuery, Ticket.class).setParameter("id", id);
+        return query.getResultList();
+    }
+
 }
