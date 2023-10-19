@@ -21,6 +21,7 @@ public class User {
     @Column(unique = true)
     @Email
     private String email;
+
     private String password;
 
     @OneToMany(mappedBy = "organizer")
