@@ -2,8 +2,10 @@ package com.gathergrid.gathergridfeatures.service;
 
 
 import com.gathergrid.gathergridfeatures.domain.Ticket;
+import com.gathergrid.gathergridfeatures.domain.enums.TicketType;
 import com.gathergrid.gathergridfeatures.repository.TicketRepository;
 
+import java.util.EnumSet;
 import java.util.List;
 
 public class TicketService {
@@ -17,8 +19,8 @@ public class TicketService {
         return ticketRepository.save(ticket);
     }
 
-    public void updateTicket(Ticket ticket){
-        ticketRepository.update(ticket);
+    public Ticket updateTicket(Ticket ticket){
+        return ticketRepository.update(ticket);
     }
     public void deleteTicket(long id){
         ticketRepository.delete(id);
@@ -31,5 +33,6 @@ public class TicketService {
     public List<Ticket> findAllTickets(){
         return ticketRepository.findAll();
     }
+
 
 }

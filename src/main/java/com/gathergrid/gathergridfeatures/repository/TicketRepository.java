@@ -19,10 +19,11 @@ public class TicketRepository {
         return ticket;
     }
 
-    public void update(Ticket ticket){
+    public Ticket update(Ticket ticket){
         entityManager.getTransaction().begin();
         entityManager.merge(ticket);
         entityManager.getTransaction().commit();
+        return ticket;
     }
 
     public void delete(long id){
