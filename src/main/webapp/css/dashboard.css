@@ -1,0 +1,434 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+::-webkit-scrollbar{
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 6px;
+    background: linear-gradient(to right, #a91b70, #d82862);
+}
+#dashboardAdmin {
+    width: 100%;
+    background: #e5e7eb;
+    position: relative;
+    display: flex;
+}
+
+#interface {
+    width: calc(100% - 242px);
+    margin-left: 242px;
+    position: relative;
+}
+
+#interface nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    padding: 15px 15px 10px 30px;
+    border-bottom: 3px solid #e02b60;
+    position: fixed;
+    width: calc(100% - 242px);
+    z-index: 1;
+}
+#interface nav .search {
+    position: relative;
+}
+#interface nav .search i {
+    margin-right: 14px;
+    padding: 14px 10px 10px 14px;
+    position: absolute;
+}
+#interface nav .search input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #d7dbe6;
+    padding-left: 34px;
+}
+#interface nav .profile {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+#interface nav .profile .notification {
+    margin-right: 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+#interface nav .profile .notification:hover {
+    cursor: pointer;
+}
+#interface nav .profile img {
+    width: 25px;
+    height: 25px;
+    margin-left: 6px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.n1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#menu-bar {
+    display: none;
+    color: #2b2b2b;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+#sideBar {
+    background: #111827;
+    width: 242px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#sideBar .logo {
+    display: flex;
+    align-items: center;
+    padding: 25px 0 0 25px;
+    color: #fff;
+}
+#sideBar .logo img {
+    width: 45px;
+}
+#sideBar .logo h1 {
+    font-size: 23px;
+    font-weight: 700;
+}
+#sideBar .logo sup {
+    font-size: 10px;
+    font-weight: 600;
+}
+#sideBar .items {
+    margin-top: 40px;
+}
+#sideBar .items li {
+    list-style: none;
+    padding: 15px 0;
+    transition: 0.3s ease;
+}
+#sideBar .items li:hover {
+    background: #253047;
+    cursor: pointer;
+}
+.active-link {
+    border-left: 2px solid #fff;
+}
+
+#sideBar .items li i {
+    color: rgb(134, 141, 151);
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+    margin: 0 10px 0 25px;
+}
+
+#sideBar .items li:hover i,
+#sideBar .items li:hover a {
+    color: #fff;
+}
+#sideBar .items a {
+    text-decoration: none;
+    color: rgb(134, 141, 151);
+    font-weight: 300px;
+    transition: 0.3s ease;
+}
+#homeAdmin {
+    min-height: 88vh;
+}
+#homeAdmin .i-name {
+    color: #444a53;
+    padding: 30px 30px 0 30px;
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 70px;
+}
+#homeAdmin .values {
+    padding: 30px 29px 0 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+#homeAdmin .values .val-box {
+    background: #fff;
+    width: 235px;
+    padding: 16px 20px;
+    border-radius: 5px;
+    display: flex;
+    height: 100px;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+}
+#homeAdmin .values .val-box i {
+    font-size: 25px;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    border-radius: 50%;
+    color: #fff;
+    margin-right: 15px;
+}
+#homeAdmin .values .val-box:nth-child(1) i {
+    background: #7b74ec;
+    width: 81px;
+}
+#homeAdmin .values .val-box:nth-child(2) i {
+    background: #5c8af0;
+}
+#homeAdmin .values .val-box:nth-child(3) i {
+    background: #74daec;
+}
+#homeAdmin .values .val-box:nth-child(4) i {
+    background: #ff5529;
+    width: 98px;
+}
+
+.values .val-box h3 {
+    font-size: 18px;
+    font-weight: 600;
+}
+#homeAdmin .values .val-box span {
+    font-size: 15px;
+    font-weight: 600;
+}
+#homeAdmin .board {
+    width: 94%;
+    margin: 30px 0 30px 30px;
+    overflow: auto;
+    background: #fff;
+    border-radius: 8px;
+}
+#homeAdmin .board img {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+#homeAdmin .board h5 {
+    font-weight: 600;
+    font-size: 14px;
+}
+#homeAdmin .board p {
+    font-weight: 400;
+    font-size: 13px;
+    color: #787d8d;
+}
+#homeAdmin .board .nomEntreprise {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: start;
+}
+table {
+    border-collapse: collapse;
+}
+tr {
+    border: 1px solid #eef0f3;
+}
+
+thead td {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 400;
+    background: #f9fafb;
+    text-align: start;
+    padding: 15px;
+}
+tbody tr td {
+    padding: 10px 15px;
+}
+tbody tr .nomEntreprise a:hover {
+    text-decoration: underline;
+}
+#homeAdmin .active p {
+    background: #d7fada;
+    padding: 2px 10px;
+    display: inline-block;
+    border-radius: 40px;
+    color: #2b2b2b;
+}
+#homeAdmin .UD a {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+    row-gap: 10px;
+}
+#homeAdmin .UD a:hover {
+    text-decoration: underline;
+}
+#homeAdmin .UD a:nth-child(1) {
+    color: #554cd1;
+}
+#homeAdmin .UD a:nth-child(2) {
+    color: #d14c7f;
+}
+#homeAdmin .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 5px 13px;
+    text-decoration: none;
+    border-radius: 100%;
+}
+
+.pagination a.active {
+    background-color: #4caf50;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+@media (max-width: 769px) {
+    .values {
+        padding: 30px 30px 0 30px;
+        justify-content: flex-start;
+    }
+    #homeAdmin .values .val-box:nth-child(1) i {
+        width: 89px;
+    }
+    #homeAdmin .values .val-box:nth-child(4) i {
+        width: 100px;
+    }
+    .values .val-box {
+        margin-bottom: 0px;
+        padding: 16px 20px;
+        margin: 10px;
+    }
+    .board {
+        width: 92%;
+        padding: 0;
+        overflow-x: auto;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+}
+#add-jobs {
+    padding: 10px 16px;
+    color: #fff;
+    position: fixed;
+    bottom: 4%;
+    right: 4%;
+    cursor: pointer;
+    border-radius: 30px;
+    background-image: linear-gradient(to right,#a91b70, #d82862);
+    gap: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: moveIcon 1.6s infinite alternate;
+}
+@keyframes moveIcon {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+#add-jobs span {
+    font-weight: 500;
+}
+#add-jobs i {
+    color: white;
+    font-weight: bold;
+}
+
+@media (max-width: 586px) {
+    .i-name {
+        padding: 30px 15px 0 15px;
+    }
+    #homeAdmin .values {
+        padding: 15px 15px 0 15px;
+    }
+    #homeAdmin .values .val-box {
+        margin-bottom: 0px;
+        width: 100%;
+        margin: 8px 0;
+    }
+    #homeAdmin .board {
+        margin: 30px 15px 30px 15px;
+    }
+    #homeAdmin .values .val-box:nth-child(1) i {
+        width: 64px;
+    }
+    #homeAdmin .values .val-box:nth-child(4) i {
+        width: 64px;
+    }
+    #menu-bar{
+        display: initial;
+    }
+    #interface {
+        width: 100%;
+        margin-left: 0px;
+        display: inline-block;
+    }
+    #interface .navigation {
+        width: 100%;
+    }
+    .values {
+        padding: 30px 30px 0 30px;
+        justify-content: flex-start;
+    }
+    #interface {
+        width: 100%;
+        margin-left: 0px;
+        display: inline-block;
+        transition: 0.3s ease;
+    }
+    #interface nav {
+        width: 100%;
+    }
+    #interface nav {
+        padding: 15px;
+    }
+    #interface nav .search input {
+        width: 150px;
+    }
+    #sideBar {
+        width: 270px;
+        position: fixed;
+        left: -270px;
+    }
+    #sideBar.active{
+        left: 0px;
+    }
+    #sideBar.active~#interface{
+        width: calc(100%- 270px);
+        margin-left: 270px;
+        transition: 0.3s ease;
+    }
+}
+#listEventBooked{
+    height: 93vh;
+    margin-top: 90px;
+}

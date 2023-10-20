@@ -8,9 +8,16 @@ import jakarta.servlet.annotation.*;
 import jakarta.ws.rs.core.Request;
 import org.mindrot.jbcrypt.BCrypt;
 
+@WebServlet(name = "helloServlet", value = "/hello-servlet")
 public class HelloServlet extends HttpServlet {
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ServletException {
+    private String message;
 
+    public void init() {
+        message = "Hello World!";
+    }
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ServletException {
+        this.getServletContext().getRequestDispatcher("/WEB-INF/homeUser.jsp").forward(request,response);
     }
 
     public void destroy() {

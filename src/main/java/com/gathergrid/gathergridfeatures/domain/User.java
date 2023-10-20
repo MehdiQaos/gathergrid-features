@@ -2,6 +2,7 @@ package com.gathergrid.gathergridfeatures.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
 import java.util.ArrayList;
