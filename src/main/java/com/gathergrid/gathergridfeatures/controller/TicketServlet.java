@@ -25,7 +25,8 @@ public class TicketServlet extends HttpServlet {
 
         int price, quantity;
         TicketType ticketType;
-        try{
+
+        try {
             price = validatePrice(priceString);
             quantity = validateQuantity(quantityString);
             ticketType = validateTicketType(ticketTypeString);
@@ -39,19 +40,8 @@ public class TicketServlet extends HttpServlet {
         TicketService ticketService = new TicketService(ticketRepository);
 
         Ticket ticket = new Ticket(price, quantity, ticketType);
-//        ticketService.createTicket(ticket);
-        resp.getWriter().println(ticketService.createTicket(ticket));
+        ticketService.createTicket(ticket);
 
-//        ticketService.deleteTicket(1);
-
-//        List<Ticket> ticketList = ticketService.findAllTickets();
-//        resp.setContentType("text/html");
-//        resp.getWriter().println("<h1>List all tickets :</h1>");
-//        resp.getWriter().println("<ul>");
-//        for(Ticket t : ticketList){
-//            resp.getWriter().println("<li>Price: " + t.getPrice()+ ", Quantity: " + t.getQuantityAvailable() + ", Type: " + t.getType() + "</li>");
-//        }
-//        resp.getWriter().println("</ul>");
     }
 
     public int validatePrice(String priceString){
