@@ -75,7 +75,7 @@ $(document).ready(function (){
     })
 
 
-    $(document).on("submit","#containerForm-update", function(e){e.preventDefault()
+    $(document).on("submit","#containerForm-update", function(e){
         $(this).find(":input").each(function(){
             console.log($(this).val());
             $(this).prop("disabled",false);
@@ -102,8 +102,8 @@ $(document).ready(function (){
         dataTicketJson.forEach((value, index)=>{
             updateOptionEdit(value.ticketType);
             appendInputSelect(value.ticketValue, value.ticketQuantity, value.ticketType, value.ticketPrice, index)
-
         })
+        $(".idEvent").val(clickedButton.attr("data-idEvent"));
 
     })
     function appendInputSelect(ticketValue, quntity, typeTicket, ticketPrice, index){
@@ -116,7 +116,7 @@ $(document).ready(function (){
                         </div>
                         <div class="mx-1">
                           <label for="type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ticket Type</label>
-                          <select name="type[]"
+                          <select name="ticketData[]"
                           class="type_ticket_updated bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 select-type-ticket">
                                 <option value="${typeTicket}" > ${ticketValue} </option>
                           </select>
@@ -147,7 +147,7 @@ $(document).ready(function (){
                         </div>
                         <div class="mx-1">
                           <label for="type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ticket Type</label>
-                          <select name="type[]" class="type_ticket_updated bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 select-type-ticket">
+                          <select name="ticketData[]" class="type_ticket_updated bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 select-type-ticket">
                           </select>
                         </div>
                         <div class="mx-1">

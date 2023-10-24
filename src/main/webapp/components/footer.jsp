@@ -1,6 +1,6 @@
 </section>
 </div>
-<a href="#" id="add-jobs"  data-modal-target="modalAddEvent" data-modal-toggle="modalAddEvent">
+<a href="${pageContext.request.contextPath}/event/add" id="add-jobs">
     <i class="fa-solid fa-plus"></i>
     <span> Create Event</span>
 </a>

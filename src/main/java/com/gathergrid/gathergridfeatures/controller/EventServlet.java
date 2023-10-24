@@ -13,6 +13,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.time.DateTimeException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -21,7 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet(urlPatterns = {"/event/add", "/event/delete"})
+@WebServlet(value = {"/event/add", "/event/delete", "/event/update"})
 public class EventServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -93,6 +95,35 @@ public class EventServlet extends HttpServlet {
                     eventService.delete(event);
                     req.getSession().setAttribute("message", "Event deleted successfully");
                 }
+                resp.sendRedirect(path + "/Dashboard");
+            }
+            case "update" -> {
+                Map<String, String> errors = new HashMap<>();
+                String path = req.getContextPath();
+                String nameEvent = req.getParameter("name-event");
+                String category = req.getParameter("category-edit");
+                String date = req.getParameter("dateEventUpdated");
+                String description = req.getParameter("descriptionEventUpdate");
+                int event_id = Integer.parseInt(req.getParameter("idEvent"));
+                int category_id = Integer.parseInt(category);
+                LocalDateTime localDateTime = LocalDateTime.now();
+                try {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-DD'T'HH:mm");
+                    localDateTime = LocalDateTime.parse(date,  formatter);
+                } catch (DateTimeException e){
+                    errors.put("dateTime","error date");
+                }
+                List<Ticket> tickets = new ArrayList<>();
+                for(int i = 0 ; i < req.getParameterValues("ticketData[]").length ;i++){
+                   int ticketIndex = Integer.parseInt(req.getParameterValues("ticketData[]")[i]);
+                   float price = Float.parseFloat(req.getParameterValues("price[]")[i]);
+                   int quantity = Integer.parseInt(req.getParameterValues("quantity[]")[i]);
+                   Ticket ticketObj = new Ticket(price, quantity, TicketType.values()[ticketIndex]);
+                   tickets.add(ticketObj);
+               }
+               Event event = new Event(nameEvent, localDateTime, description, description);
+               EventService eventService = new EventService();
+               eventService.updateEvent(event_id, event , 1, tickets, category_id);
                 resp.sendRedirect(path + "/Dashboard");
             }
         }

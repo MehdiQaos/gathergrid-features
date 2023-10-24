@@ -40,8 +40,21 @@ public class EventService {
         return eventRepository.save(event);
     }
 
-    public Event updateEvent(Event event) {
-        return eventRepository.update(event);
+    public Event updateEvent(long event_id,Event event, long organizerId, List<Ticket> tickets, long categoryId) {
+        Event event1 = eventRepository.find(event_id);
+        for(Ticket ticket: tickets)
+            event.addTicket(ticket);
+        CategoryService categoryService = new CategoryService();
+        UserService userService = new UserService();
+        Category category = categoryService.getById(categoryId);
+        User user = userService.getById(organizerId);
+        event.setOrganizer(user);
+        event.setCategory(category);
+        event1.setDate(event.getDate());
+        event1.setName(event.getName());
+        event1.setDescription(event.getDescription());
+        event1.setAddress(event.getDescription());
+        return eventRepository.update(event1);
     }
 
     public Event findById(long id) {

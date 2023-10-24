@@ -23,13 +23,13 @@ public class Ticket {
     @OneToMany(mappedBy = "ticket", fetch = FetchType.EAGER)
     private List<Reservation> reservations = new ArrayList<>();
 
-    public Ticket() {}
-
     public Ticket(float price, int quantityAvailable, TicketType type) {
         this.price = price;
         this.quantityAvailable = quantityAvailable;
         this.type = type;
     }
+
+    public Ticket() {}
 
     public Event getEvent() {
         return event;

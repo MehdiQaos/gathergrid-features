@@ -78,6 +78,7 @@
                            data-date="<c:out value="${event.date}" />"
                            data-description="<c:out value="${event.description}" />"
                             data-ticket="<c:out value="${dataTickets}" />"
+                           data-idEvent="<c:out value="${event.id}" />"
                            >Edit</a>
                         <a class="cursor-pointer" data-modal-target="deleteEvent" data-modal-toggle="deleteEvent">Delete</a>
                     </td>

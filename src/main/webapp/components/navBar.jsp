@@ -33,14 +33,14 @@
     </div>
     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownVousButton">
         <li>
-            <router-link to="/dashboard"
+            <a href="${pageContext.request.contextPath}/Dashboard"
                          class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard
-            </router-link>
+            </a>
         </li>
         <li>
-            <router-link to="/profile" href="#"
+            <a  href="${pageContext.request.contextPath}/profile"
                          class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">profile
-            </router-link>
+            </a>
         </li>
     </ul>
     <div class="py-2">
