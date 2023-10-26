@@ -16,9 +16,15 @@ import java.util.stream.Collectors;
 
 public class EventService {
     private final EventRepository eventRepository;
+    private UserService userService;
 
-    public EventService(EventRepository eventRepository) {
+    private CategoryService categoryService;
+
+    public EventService(EventRepository eventRepository, CategoryService categoryService, UserService userService) {
+
         this.eventRepository = eventRepository;
+        this.userService = userService;
+        this.categoryService = categoryService;
     }
 
     public EventService() {
@@ -29,8 +35,6 @@ public class EventService {
     public Event createEvent(Event event, long organizerId, List<Ticket> tickets, long categoryId) {
         for (Ticket ticket : tickets)
             event.addTicket(ticket);
-        CategoryService categoryService = new CategoryService();
-        UserService userService = new UserService();
         Category category = categoryService.getById(categoryId);
         User user = userService.getById(organizerId);
         event.setOrganizer(user);
