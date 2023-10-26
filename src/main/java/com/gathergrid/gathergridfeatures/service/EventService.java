@@ -29,10 +29,8 @@ public class EventService {
     public Event createEvent(Event event, long organizerId, List<Ticket> tickets, long categoryId) {
         for (Ticket ticket : tickets)
             event.addTicket(ticket);
-
         CategoryService categoryService = new CategoryService();
         UserService userService = new UserService();
-
         Category category = categoryService.getById(categoryId);
         User user = userService.getById(organizerId);
         event.setOrganizer(user);
