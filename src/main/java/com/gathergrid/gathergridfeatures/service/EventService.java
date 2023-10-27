@@ -6,6 +6,7 @@ import com.gathergrid.gathergridfeatures.domain.Ticket;
 import com.gathergrid.gathergridfeatures.domain.User;
 import com.gathergrid.gathergridfeatures.repository.interfaces.EventRepository;
 import com.gathergrid.gathergridfeatures.repository.interfacesImpl.EventRepositoryImpl;
+import com.gathergrid.gathergridfeatures.repository.interfacesImpl.UserRepository;
 import com.gathergrid.gathergridfeatures.utils.EntityManagerUtil;
 import jakarta.persistence.EntityManager;
 
@@ -13,6 +14,7 @@ import java.util.List;
 
 public class EventService {
     private final EventRepository eventRepository;
+    private final UserRepository<User> userRepository = new UserRepository<>();
 
     public EventService(EventRepository eventRepository) {
         this.eventRepository = eventRepository;
@@ -28,7 +30,7 @@ public class EventService {
             event.addTicket(ticket);
 
         CategoryService categoryService = new CategoryService();
-        UserService userService = new UserService();
+        UserService userService = new UserService(userRepository);
 
         Category category = categoryService.getById(categoryId);
         User user = userService.getById(organizerId);
@@ -42,7 +44,7 @@ public class EventService {
         for(Ticket ticket: tickets)
             event.addTicket(ticket);
         CategoryService categoryService = new CategoryService();
-        UserService userService = new UserService();
+        UserService userService = new UserService(userRepository);
         Category category = categoryService.getById(categoryId);
         User user = userService.getById(organizerId);
         event.setOrganizer(user);
@@ -62,8 +64,9 @@ public class EventService {
         return eventRepository.findAll();
     }
 
-    public void delete(Event event) {
+    public Event delete(Event event) {
         eventRepository.delete(event.getId());
+        return event;
     }
 
     public List<Event> fetchAllEventOfUser(Long user_id){

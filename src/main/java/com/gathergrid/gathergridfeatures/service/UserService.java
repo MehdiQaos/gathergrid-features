@@ -9,8 +9,8 @@ import java.util.Optional;
 public class UserService {
     private final UserRepository<User> userRepository;
 
-    public UserService() {
-        userRepository = new UserRepository<>();
+    public UserService(UserRepository<User> userRepository1) {
+        this.userRepository = userRepository1;
     }
 
     public Optional<User> save(User user){
@@ -29,7 +29,7 @@ public class UserService {
                 return user1;
             }
         }
-        return Optional.empty();
+       throw new RuntimeException("This user Not Found");
     }
 
     public User getById(long id) {

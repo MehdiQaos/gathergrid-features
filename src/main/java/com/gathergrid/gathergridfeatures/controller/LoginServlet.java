@@ -1,6 +1,7 @@
 package com.gathergrid.gathergridfeatures.controller;
 
 import com.gathergrid.gathergridfeatures.domain.User;
+import com.gathergrid.gathergridfeatures.repository.interfacesImpl.UserRepository;
 import com.gathergrid.gathergridfeatures.service.UserService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,7 +19,8 @@ public class LoginServlet extends pagesServlet {
 
     @Override
     public void init() {
-        service = new UserService();
+        UserRepository<User> userRepository = new UserRepository<>();
+        service = new UserService(userRepository);
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
@@ -154,5 +156,22 @@ public class LoginServlet extends pagesServlet {
 
     public static String hashPassword(String plainPassword) {
         return BCrypt.hashpw(plainPassword, BCrypt.gensalt());
+    }
+    public boolean logintest (String email, String password) {
+
+        List<String> resultValidation = loginValidation(email, password);
+        User user = new User();
+
+        user.setEmail(email);
+        user.setPassword(password);
+
+        if(resultValidation.isEmpty()) {
+            Optional<User> user1 = service.CheckEmail(user);
+
+            if (user1.isPresent()) {
+               return true;
+            }
+        }
+        return false;
     }
 }

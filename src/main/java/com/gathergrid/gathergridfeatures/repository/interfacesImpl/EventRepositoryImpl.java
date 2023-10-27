@@ -66,6 +66,4 @@ public class EventRepositoryImpl implements EventRepository {
 
 
 
-
-
 }
