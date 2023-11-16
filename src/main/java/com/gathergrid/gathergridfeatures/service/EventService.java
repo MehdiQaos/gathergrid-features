@@ -20,8 +20,7 @@ public class EventService {
 
     private CategoryService categoryService;
 
-    public EventService(EventRepository eventRepository, CategoryService categoryService, UserService userService) {
-
+    public EventService(EventRepository eventRepository , UserService userService, CategoryService categoryService) {
         this.eventRepository = eventRepository;
         this.userService = userService;
         this.categoryService = categoryService;
@@ -35,9 +34,9 @@ public class EventService {
     public Event createEvent(Event event, long organizerId, List<Ticket> tickets, long categoryId) {
         for (Ticket ticket : tickets)
             event.addTicket(ticket);
-        Category category = categoryService.getById(categoryId);
         User user = userService.getById(organizerId);
         event.setOrganizer(user);
+        Category category = categoryService.getById(categoryId);
         event.setCategory(category);
         return eventRepository.save(event);
     }
